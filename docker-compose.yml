@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "5000:5000"  # adjust as per your app
+    environment:
+      - MONGO_URL=mongodb+srv://kumkumheralgi18:EfasmK*eA3@cluster0.ygtbr.mongodb.net/YOUR_DB?retryWrites=true&w=majority
+    restart: always
+    volumes:
+      - ./backend:/app  # optional, if you want live code updates
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:3000"
+    stdin_open: true
+    tty: true
+    volumes:
+      - ./frontend:/app  # optional, for live code updates
